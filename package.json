@@ -20,5 +20,9 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "recoil": "^0.7.7",
+    "@repo/store": "*"
+  }
 }

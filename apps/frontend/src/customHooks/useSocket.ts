@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-let url= "ws://localhost:8080"
+const url= "ws://localhost:8080"
 export function useSocket(){
-    const [socket,setSocket]=useState<null | boolean>(true)
+    const [socket,setSocket]=useState<null | string | boolean>(true)
    useEffect(()=>{
-      
+      setSocket(url)
     //   const ws= new WebSocket(url)
 
     //   ws.onopen=function(socket){
