@@ -6,9 +6,7 @@ const router=Router()
 
 
 
-//clientId= 147990581667-bdf0r6kfl7h1uctgeel8jrtqflbe4c94.apps.googleusercontent.com
-//client-scecret = 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
-// check How Passport will work and add a logic for login and Authentication
+
 
 const CLIENT_URL =
   process.env.AUTH_REDIRECT_URL ?? 'http://localhost:5173/';
