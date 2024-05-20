@@ -2,7 +2,7 @@
   "name": "chess_game_multiplayer",
   "private": true,
   "scripts": {
-    "build": "turbo build",
+    "build": "turbo build --no-cache",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
@@ -23,6 +23,7 @@
   ],
   "dependencies": {
     "recoil": "^0.7.7",
-    "@repo/store": "*"
+    "@repo/store": "*",
+    "@repo/db": "*"
   }
 }
