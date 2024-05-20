@@ -26,12 +26,15 @@ app.use(cors({
     credentials: true,
 }))
 
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { secure: true }
-}));
+app.use(
+  session({
+    secret: process.env.COOKIE_SECRET || 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 },
+  }),
+);
+
 
 
 app.use(passport.initialize());

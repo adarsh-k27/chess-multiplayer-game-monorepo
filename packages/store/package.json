@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "exports":{
-   "./chessboard":"./src/atoms/chessboard.ts"
+   "./chessboard":"./src/atoms/chessboard.ts",
+   "./useUser":"./src/hooks/useUser.ts"
   },
   "keywords": [],
   "author": "",
