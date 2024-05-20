@@ -23,6 +23,7 @@
     "packages/*"
   ],
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.1.2",
     "@repo/db": "*",
     "@repo/store": "*",
     "jsonwebtoken": "^9.0.2",
