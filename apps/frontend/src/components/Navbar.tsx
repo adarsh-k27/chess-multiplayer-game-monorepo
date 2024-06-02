@@ -1,4 +1,3 @@
-import React from 'react';
 import * as Accordion from '@radix-ui/react-accordion';
 import { Link } from 'react-router-dom';
 

@@ -24,18 +24,54 @@ model User {
   rating        Int?      @default(1200)
   createdAt     DateTime @default(now())
   lastLogin     DateTime?
+  gamesAsWhite  Game[]   @relation("GameAsWhite")
+  gamesAsBlack  Game[]   @relation("GameAsBlack")
 
   @@index([rating])
+}
+
+model Game {
+  id    String     @id @default(uuid())
+  whitePlayerId Int
+  blackPlayerId Int?
+  whitePlayer User @relation("GameAsWhite",fields: [whitePlayerId],references: [id]) 
+  blackPlayer User? @relation("GameAsBlack",fields: [blackPlayerId],references: [id])
+  status Game_Status 
+  result Results?
+  startAt DateTime   @default(now())
+  endAt   DateTime?
+  timeControl TimeControl
+  startingFen String @default("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
+  currebtFen String?
 }
 
 
 
 
 
+enum TimeControl {
+  CLASSICAL
+  RAPID
+  BLITZ
+  BULLET
+}
 
 enum AuthPRovider {
   EMAIL
   FACEBOOK
   google
   GITHUB
+}
+
+enum Game_Status {
+  IN_PROGRESS
+  COMPLETED
+  ABANDONED
+  TIME_UP
+}
+
+enum Results {
+  WHITE_WIN
+  BLACK_WIN
+  DRAW
 }
