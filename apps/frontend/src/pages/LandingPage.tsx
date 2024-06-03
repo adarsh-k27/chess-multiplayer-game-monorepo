@@ -1,12 +1,11 @@
 
 // import { useNavigate } from 'react-router-dom';
+import { useUser } from '@repo/store/useUser';
 import { useSocket } from '../customHooks/useSocket';
 // Import the chess board image, assuming it's located in the src/assets folder
 // import chessBoardImage from './assets/chess-board.jpg';
 
 const LandingPage = () => {
-    
-
     const socket = useSocket()
     if(!socket){
         

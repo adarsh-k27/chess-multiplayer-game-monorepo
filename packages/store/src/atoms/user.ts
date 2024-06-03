@@ -18,12 +18,14 @@ export const userAtom=atom({
                 if (response.ok) {
                   const data = await response.json();
                   console.log("Datas",data);
-                  
                   return data;
                 }
               } catch (e) {
                 console.error(e);
+                return null
               }
+              return null;
+              
         }
     })
 })
