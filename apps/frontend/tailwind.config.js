@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'whiteboard': '#EBECD0', // Replace with your desired color
+      },
+
+    },
   },
   plugins: [],
 }
