@@ -1,20 +1,11 @@
 
 import { Chess, Color, PieceSymbol, Square } from 'chess.js'
-import q from '../assets/q.svg'
-import k from '../assets/k.svg'
-import b from '../assets/b.svg'
-import p from '../assets/p.svg'
-import n from '../assets/n.svg'
-import r from '../assets/r.svg'
-import Q from '../assets/q.copy.svg'
-import K from '../assets/k.copy.svg'
-import B from '../assets/b.copy.svg'
-import P from '../assets/p.copy.svg'
-import N from '../assets/n.copy.svg'
-import R from '../assets/r.copy.svg'
+import SquareBoard from './Game-board/square';
+import { useWindowSize } from '../hooks/useWindowSize';
+
 type GameBoardPropsT = {
-    chess:Chess,
-    board:({
+    chess: Chess,
+    board: ({
         square: Square;
         type: PieceSymbol;
         color: Color;
@@ -23,36 +14,31 @@ type GameBoardPropsT = {
 
 
 
-const chessAssets:any={
-    q,k,b,p,r,n,B,Q,K,R,P,N
-}
 
-function selectAsset(type:any,color:any){
-    return color=="w" ? type.toUpperCase() : type
-  }
 
-export default function GameBoard({chess,board }: GameBoardPropsT) {
+export default function GameBoard({ chess, board }: GameBoardPropsT) {
+    const { width, height } = useWindowSize()
+
+    const boxSize = width > height ? Math.floor((height - 100) / 8) : Math.floor((width - 100) / 8)
+
     return (
-        <div>
-            <div className=''>GAME BOARD</div>
+        <div className='w-auto h-auto flex flex-col'>
             {
-                board.map((row,index)=>{
-                    const rowIndex=index
-                   return(
-                    <div key={index} className='flex flex-row'>
-                        {
-                            row.map((square,i)=>{
-                                const colIndex=i
-                                return(
-                                    <div className={`${Boolean((rowIndex + colIndex) % 2) ? "bg-green-500" :"bg-whiteboard"} relative px-10 py-10 w-4`} key={index}>
-
-                                        {square?.type ? <img className='absolute top-6 left-6' src={chessAssets[selectAsset(square?.type,square.color)]} alt="Description of SVG"/> : null} 
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
-                   )
+                board.map((row, index) => {
+                    const rowIndex = index
+                    return (
+                        <div key={index} className='flex flex-row '>
+                            {
+                                row.map((square, i) => {
+                                    return (
+                                        <div style={{ width: boxSize, height: boxSize }}>
+                                            <SquareBoard square={square} isWhiteSquare={Boolean((rowIndex + i) % 2)} />
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    )
                 })
             }
         </div>

@@ -8,7 +8,9 @@ const wss = new WebSocketServer({
   });
 const gameManager= new GameManagement()
 wss.on("connection",async(ws,req)=>{
+    
     const token= url.parse(req.url!, true).query.token
+    
     const userId= decodeToken(token ? Array.isArray(token) ? token[0] : token :"")
     //here we need to add the user and socketConnection inside Game Management Class
     let user=new User(ws,userId)
