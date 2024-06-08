@@ -9,7 +9,7 @@ export default function Game({}: Props) {
     const [board,setBoard]=useState(chess.board())
 
   return (
-     <div className='w-full h-auto justify-center items-center flex'>
+     <div className='w-full h-auto justify-center items-center flex  overflow-x-scroll'>
         <ChessBoard chess={chess} board={board} />
      </div>
   )

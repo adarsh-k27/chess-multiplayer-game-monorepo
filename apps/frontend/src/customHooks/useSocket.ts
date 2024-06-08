@@ -1,16 +1,20 @@
 import { useUser } from "@repo/store/useUser";
 import { useEffect, useState } from "react";
+import { WebSocket as WebSocketType, MessageEvent } from 'ws'
+import { useNavigate } from "react-router-dom";
 const url= "ws://localhost:8080"
+
+
+type WT= typeof window.WebSocket.prototype
+
 export function useSocket(){
-    const [socket,setSocket]=useState<null | string | boolean>(true)
+    const [socket,setSocket]=useState<null | string | boolean | WT>(true)
     const user=useUser()
-    console.log("User",user);
-    
    useEffect(()=>{
       setSocket(url)
-      const ws:any= new WebSocket(`${url}?token=${user?.token}`)
+      const ws:WT = new WebSocket(`${url}?token=${"kjhjghvhgcgfch"}`)
 
-      ws.onopen=function(socket:any){
+      ws.onopen=function(socket:any ){
           setSocket(ws)
       }
 
@@ -25,3 +29,21 @@ export function useSocket(){
 
    return socket;
 }
+
+
+
+
+
+enum type {
+    error
+}
+type SocketMessage = {
+    type: type,
+    message: string,
+    httpStatusCode: string
+}
+
+
+
+
+

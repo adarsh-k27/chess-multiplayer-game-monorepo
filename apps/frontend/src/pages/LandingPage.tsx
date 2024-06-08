@@ -3,12 +3,34 @@
 
 import { useSocket } from '../customHooks/useSocket';
 import { useNavigate } from 'react-router-dom';
+import {useSocketError} from '../customHooks/useSockeTError'
+import { useEffect } from 'react';
+import { IsToaster } from '../utilities/Toaster/rxjs';
+
 // Import the chess board image, assuming it's located in the src/assets folder
 // import chessBoardImage from './assets/chess-board.jpg';
 
 const LandingPage = () => {
     const Navigate=useNavigate()
     const socket = useSocket()
+    const {error,handleError}=useSocketError(socket)
+    console.log('====================================');
+    console.log("ERRR",error);
+    console.log('====================================');
+    useEffect(()=>{
+       if(error){
+        IsToaster.next({
+            open:true,
+            message:typeof error=="string" ? error :""
+        })
+        handleError(error)
+       }
+    },[error])
+
+    
+    
+
+
     if(!socket){
         
         return <p className='text-white'>CONNECTING...</p>
