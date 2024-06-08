@@ -15,7 +15,7 @@ function RouterApp() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={Boolean(user) ?  <Navigate to={"/"} /> : <Layout children={<LoginScreen />} />} />
+        <Route path="/login" element={Boolean(user) ?  <Navigate to={"/"} /> : <LoginScreen />}  />
         {/* <Route path="/game/random" element={!Boolean(user) ?  <Navigate to={"/login"} />  : <Layout children={<Game />} />} /> */}
         <Route path="/game/random" element={ <Layout children={<Game />} />} />
         <Route path="/" element={<Layout children={<LandingPage />} />} />

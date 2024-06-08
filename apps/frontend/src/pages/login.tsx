@@ -11,9 +11,9 @@ export default function LoginScreen({ }: Props) {
         window.open(url, '_self');
     }
     return (
-        <section className="bg-gray-900 flex items-center justify-center min-h-screen">
+        <section className="w-screen h-screen sm:min-w-[300] bg-gray-900 flex items-center justify-center ">
 
-            <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-8">
+            <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-3 xs:p-6 sm:p-8">
                 <div className="flex justify-center mb-4">
                     <img src="/logo.jpg" alt="Chess.com" className="w-20 h-28" />
                 </div>

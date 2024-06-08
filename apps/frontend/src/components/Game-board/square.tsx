@@ -30,11 +30,13 @@ function selectAsset(type: any, color: any) {
   return color == "w" ? type.toUpperCase() : type
 }
 
+//so aspect ratio of image bw  height and width was  for 103 px have 50 :70
+
 export default function SquareBoard({ square, isWhiteSquare }: SquareProps) {
 
   return (
-    <div className={`${isWhiteSquare ? "bg-green-500" : "bg-whiteboard"} relative px-14 py-12 w-full h-full `} >
-      {square?.type ? <img className='absolute top-6 left-6' src={chessAssets[selectAsset(square?.type, square.color)]} alt="Description of SVG" /> : null}
+    <div className={`${isWhiteSquare ? "bg-green-500" : "bg-whiteboard"}  h-full justify-center items-center flex  `} >
+      {square?.type ? <img style={{objectFit:"contain",}} className='w-14 h-[60%] ' src={chessAssets[selectAsset(square?.type, square.color)]} alt="Description of SVG" /> : null}
     </div>
   )
 }

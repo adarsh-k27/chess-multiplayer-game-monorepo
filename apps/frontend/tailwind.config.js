@@ -8,8 +8,21 @@ export default {
     extend: {
       colors: {
         'whiteboard': '#EBECD0', // Replace with your desired color
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))", 
+        border: "hsl(var(--border))",
       },
-
+      screens:{
+        xs:"426px",
+        sm:"640px",
+        md:"768px",
+        lg:"1024px",
+        xl:"1280px",
+        "2xl":"1536px"
+      },
+      width:{
+        300:"300px"
+      }
     },
   },
   plugins: [],

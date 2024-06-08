@@ -7,7 +7,9 @@ export function useWindowSize() {
     })
 
     const handleSize=()=>{
-        setWindowSize({width:window.innerWidth,height:window.innerHeight})
+        if(window.innerWidth >=350){
+            setWindowSize({width:window.innerWidth,height:window.innerHeight})
+        }
     }
 
     useLayoutEffect(()=>{
