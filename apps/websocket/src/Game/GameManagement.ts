@@ -24,19 +24,24 @@ export class GameManagement {
     addHandler(user: User) {
         user.socket.on("message", async(payload) => {
             const message = JSON.parse(payload.toString())
-
+            
             switch (message.type) {
                 case Messages.INIT_GAME: {
+                    
                     if (this.pendingGameId) {
                         //we need to find the game from gamesArray then we will get the user1 and all details
                         const game = this.games.find((game_data: Game) => game_data.gameId === this.pendingGameId)
-                        
+                        user.socket.send(JSON.stringify({
+                            type:Messages.GAME_ADDED
+                        }))
                         if (!game) {
                             return "NO PENDING GAME AVAILABLE"
                         }
                         if (game.player1UserId == user.userId) {
                             const message=JSON.stringify({
-                                type:Messages.SELF_ALERT
+                                type:Messages.SELF_ALERT,
+                                message:"You are Trying to play with Your self",
+
                             })
                             SocketManager.getInstance().broadcast(game.gameId,message)
                             user.socket.send(message)
@@ -66,10 +71,7 @@ export class GameManagement {
                         // implement broadcast connection for that user 
                         SocketManager.getInstance().addUser(user, game.gameId)
                         SocketManager.getInstance().broadcast(game.gameId, JSON.stringify({
-                            type: JSON.stringify({
-                                type: message.GAME_ADDED,
-                            }),
-
+                            type: Messages.GAME_ADDED,
                         }))
 
                     }

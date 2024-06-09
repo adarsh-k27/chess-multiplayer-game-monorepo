@@ -26,10 +26,14 @@ export class Game {
 
     //we need to create the game here 
     try {
-      await this.createGameInDb()
+     const res= await this.createGameInDb()
+     if(res.id){
+      //emit a socket connection 
+     }
     } catch (error) {
       console.log("error happend in Game Creation ");
     }
+
   }
 
   private async createGameInDb() {
@@ -58,6 +62,8 @@ export class Game {
     if (createGame.id) {
       this.gameId = createGame.id
     }
+
+    return createGame;
   }
 
 

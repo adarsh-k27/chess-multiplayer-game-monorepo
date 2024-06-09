@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { WebSocket, MessageEvent } from 'ws'
+import {  MessageEvent } from 'ws'
 
  enum ErrorType {
     Error = 'Error',
@@ -64,7 +64,7 @@ export function useSocketError(socket: null | string | boolean | WT) {
     }
 }
 
-function convertToActualMessage<T>(messageEvent: MessageEvent): T {
+export function convertToActualMessage<T>(messageEvent: MessageEvent): T {
     return JSON.parse(messageEvent.data.toString())
 }
 

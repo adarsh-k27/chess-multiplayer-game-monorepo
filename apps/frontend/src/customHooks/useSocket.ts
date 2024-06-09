@@ -1,7 +1,5 @@
 import { useUser } from "@repo/store/useUser";
 import { useEffect, useState } from "react";
-import { WebSocket as WebSocketType, MessageEvent } from 'ws'
-import { useNavigate } from "react-router-dom";
 const url= "ws://localhost:8080"
 
 
@@ -12,7 +10,7 @@ export function useSocket(){
     const user=useUser()
    useEffect(()=>{
       setSocket(url)
-      const ws:WT = new WebSocket(`${url}?token=${"kjhjghvhgcgfch"}`)
+      const ws:WT = new WebSocket(`${url}?token=${user?.token}`)
 
       ws.onopen=function(socket:any ){
           setSocket(ws)

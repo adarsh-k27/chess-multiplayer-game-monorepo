@@ -22,7 +22,11 @@ export default {
       },
       width:{
         300:"300px"
-      }
+      },
+      gridTemplateColumns: {
+        '7/3': '70% 30%',
+      },
+
     },
   },
   plugins: [],
