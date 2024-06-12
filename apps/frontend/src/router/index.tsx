@@ -1,53 +1,57 @@
-import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import {  Route, RouterProvider,  createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import { AuthLayout } from '../layout/authLayout'
 import { AUTH_RELATED_ROUTE, PRIVATE_ROUTE, PUBLIC_ROUTE } from './path'
 import { PublicLayout } from '../layout/publicLayout'
 import { PrivateLayout } from '../layout/privateLayout'
+import { Fragment } from 'react/jsx-runtime'
 
-type Props = {}
 
-export default function RouterWrapper({}: Props) {
+
+export function RouterWrapper1() {
     return (
-        <BrowserRouter>
-          <Routes>
-            {/* <Route path="/login" element={Boolean(user) ?  <Navigate to={"/"} /> : <LoginScreen />}  />
-            
-            <Route path="/game/:id" element={ <Layout children={<Game />} />} />
-            <Route path="/" element={<Layout children={<LandingPage />} />} /> */}
-            <Route  element={<AuthLayout />} >
-               {
-                AUTH_RELATED_ROUTE.map(({
-                  component:Component,
-                  ...restProps
-                })=>(
-                  <Route {...restProps}  element={<Component />} />
-                ))
-               }
+        <Fragment>
+            <Route element={<AuthLayout />} >
+                {
+                    AUTH_RELATED_ROUTE.map(({
+                        component: Component,
+                        ...restProps
+                    }) => (
+                        <Route  {...restProps} element={<Component />} />
+                    ))
+                }
             </Route>
-    
-            <Route  element={<PublicLayout />} >
-               {
-                PUBLIC_ROUTE.map(({
-                  component:Component,
-                  ...restProps
-                })=>(
-                  <Route {...restProps}  element={<Component />} />
-                ))
-               }
+
+            <Route element={<PublicLayout />} >
+                {
+                    PUBLIC_ROUTE.map(({
+                        component: Component,
+                        ...restProps
+                    }) => (
+                        <Route {...restProps} element={<Component />} />
+                    ))
+                }
             </Route>
-    
-            <Route  element={<PrivateLayout />} >
-               {
-                PRIVATE_ROUTE.map(({
-                  component:Component,
-                  ...restProps
-                })=>(
-                  <Route {...restProps}  element={<Component />} />
-                ))
-               }
+
+            <Route element={<PrivateLayout />} >
+                {
+                    PRIVATE_ROUTE.map(({
+                        component: Component,
+                        ...restProps
+                    }) => (
+                        <Route {...restProps} element={<Component />} />
+                    ))
+                }
             </Route>
-          </Routes>
-        </BrowserRouter>
-      )
+        </Fragment>
+
+    )
 }
+
+
+
+export const routes = createBrowserRouter(
+    createRoutesFromElements(RouterWrapper1())
+)
+
+const RouterWrapper = () => (<RouterProvider router={routes} />)
+export default RouterWrapper;
