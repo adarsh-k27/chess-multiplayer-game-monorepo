@@ -4,11 +4,10 @@ import Navbar from '../components/Navbar';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useUser } from '@repo/store/useUser';
 
-export const Layout = ({ children }: { children: React.ReactNode }) => {
+export const PrivateLayout = () => {
     const user = useUser()
   return user ? (
     <>
-    
       <Navbar />
       <div className="flex h-screen border-collapse overflow-hidden">
         {/* <Sidebar /> */}
