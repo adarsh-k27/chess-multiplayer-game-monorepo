@@ -14,9 +14,7 @@ const LandingPage = () => {
     const Navigate=useNavigate()
     const socket = useSocket()
     const {error,handleError}=useSocketError(socket)
-    console.log('====================================');
-    console.log("ERRR",error);
-    console.log('====================================');
+    
     useEffect(()=>{
        if(error){
         IsToaster.next({

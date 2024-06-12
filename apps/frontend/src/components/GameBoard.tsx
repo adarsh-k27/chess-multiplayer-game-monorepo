@@ -2,6 +2,7 @@
 import { Chess, Color, PieceSymbol, Square } from 'chess.js'
 import SquareBoard from './Game-board/square';
 import { useWindowSize } from '../hooks/useWindowSize';
+import { useState } from 'react';
 
 type GameBoardPropsT = {
     chess: Chess,
@@ -18,8 +19,6 @@ type GameBoardPropsT = {
 
 export default function GameBoard({ chess, board }: GameBoardPropsT) {
     const { width, height } = useWindowSize()
-     
-     
     const boxSize = width > height ? Math.floor((height - 100) / 8) : Math.floor((width - 100) / 8)
 
     return (

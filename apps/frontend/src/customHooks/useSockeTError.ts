@@ -22,8 +22,6 @@ export function useSocketError(socket: null | string | boolean | WT) {
     const navigate = useNavigate()
     const [error, setError] = useState<boolean | string>(false)
     
-
-
     const handleError = useCallback((errorMessage:string | true) => {
         return new Promise((resolve, reject) => {
           try {

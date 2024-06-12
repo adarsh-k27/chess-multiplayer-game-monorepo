@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Chess } from 'chess.js'
 import ChessBoard from '../components/GameBoard'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useSocket } from '../customHooks/useSocket'
 import { Messages } from '../utilities/Toaster/constants'
 import { convertToActualMessage } from '../customHooks/useSockeTError'
@@ -83,6 +83,13 @@ export default function Game({ }: Props) {
             }
          }
       }
+       // here clean up event listener 
+      return () => {
+         if (socket !== null && typeof socket !== "boolean" && typeof socket !== "string") {
+         socket.onmessage = null;
+         socket.close();
+         }
+       };
    }, [socket])
 
 
