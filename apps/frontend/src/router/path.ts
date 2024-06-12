@@ -1,7 +1,4 @@
 import React from "react"
-import { PrivateLayout } from "../layout/privateLayout"
-import { PublicLayout } from "../layout/publicLayout"
-import { AuthLayout } from "../layout/authLayout"
 
 const LAZY_GAME_SCREEN= React.lazy(()=> import ("../pages/Game"))
 const LAZY_LANDING_SCREEN= React.lazy(()=> import ("../pages/LandingPage"))
@@ -44,7 +41,7 @@ export  const AUTH_RELATED_ROUTE=[
     {
       
       path:AUTH_PATH.LOGIN,
-      name:"LOGIN",
+      key:"LOGIN",
       component:LAZY_LOGIN_SCREEN,
       
 

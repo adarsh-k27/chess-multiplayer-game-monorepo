@@ -14,9 +14,10 @@ export function RouterWrapper1() {
                 {
                     AUTH_RELATED_ROUTE.map(({
                         component: Component,
+                        key,
                         ...restProps
                     }) => (
-                        <Route  {...restProps} element={<Component />} />
+                        <Route  {...restProps} element={<Component />} key={key} />
                     ))
                 }
             </Route>
@@ -25,9 +26,10 @@ export function RouterWrapper1() {
                 {
                     PUBLIC_ROUTE.map(({
                         component: Component,
+                        key,
                         ...restProps
                     }) => (
-                        <Route {...restProps} element={<Component />} />
+                        <Route {...restProps} element={<Component />} key={key} />
                     ))
                 }
             </Route>
@@ -36,9 +38,10 @@ export function RouterWrapper1() {
                 {
                     PRIVATE_ROUTE.map(({
                         component: Component,
+                        key,
                         ...restProps
                     }) => (
-                        <Route {...restProps} element={<Component />} />
+                        <Route {...restProps} element={<Component />} key={key} />
                     ))
                 }
             </Route>
