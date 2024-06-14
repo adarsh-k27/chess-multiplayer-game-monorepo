@@ -2,10 +2,8 @@ import Navbar from '../components/Navbar';
 import {  Outlet } from 'react-router-dom';
 
 export const PublicLayout = () => {
-
     return (
         <>
-
             <Navbar />
             <div className="flex h-screen border-collapse overflow-hidden">
                 {/* <Sidebar /> */}

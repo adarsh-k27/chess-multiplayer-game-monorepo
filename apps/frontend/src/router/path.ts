@@ -4,11 +4,11 @@ const LAZY_GAME_SCREEN= React.lazy(()=> import ("../pages/Game"))
 const LAZY_LANDING_SCREEN= React.lazy(()=> import ("../pages/LandingPage"))
 const LAZY_LOGIN_SCREEN= React.lazy(()=> import ("../pages/login"))
 
-const PRIVATE_PATHS={
-    GAME:"/game/:id"
-}
+    const PRIVATE_PATHS={
+        GAME:"/game/:id"
+    }
 
-const PUBLIC_PATH={
+    const PUBLIC_PATH={
     HOME:"/",
 }
 
@@ -24,7 +24,7 @@ export const PRIVATE_ROUTE=[
         key:"GAME",
         component:LAZY_GAME_SCREEN,
         
-    }
+    },
 ]
 
 
@@ -34,7 +34,8 @@ export const PUBLIC_ROUTE=[
         key:"HOME",
         component:LAZY_LANDING_SCREEN,
         
-    }
+    },
+    ...PRIVATE_ROUTE,
 ]
 
 export  const AUTH_RELATED_ROUTE=[

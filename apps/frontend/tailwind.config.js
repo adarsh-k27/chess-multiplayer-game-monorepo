@@ -8,6 +8,7 @@ export default {
     extend: {
       colors: {
         'whiteboard': '#EBECD0', // Replace with your desired color
+        greenboard:"#739552",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))", 
         border: "hsl(var(--border))",

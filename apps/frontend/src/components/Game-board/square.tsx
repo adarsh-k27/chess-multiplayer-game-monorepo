@@ -35,7 +35,7 @@ function selectAsset(type: any, color: any) {
 export default function SquareBoard({ square, isWhiteSquare }: SquareProps) {
 
   return (
-    <div className={`${isWhiteSquare ? "bg-green-500" : "bg-whiteboard"}  h-full justify-center items-center flex  `} >
+    <div className={`${isWhiteSquare ? "bg-greenboard" : "bg-whiteboard"}  h-full justify-center items-center flex  `} >
       {square?.type ? <img style={{objectFit:"contain",}} className='w-14 h-[60%] ' src={chessAssets[selectAsset(square?.type, square.color)]} alt="Description of SVG" /> : null}
     </div>
   )
