@@ -11,6 +11,7 @@ export default {
         greenboard:"#739552",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))", 
+        indicater:"#00FF00",
         border: "hsl(var(--border))",
       },
       screens:{
