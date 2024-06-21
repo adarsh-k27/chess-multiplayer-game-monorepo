@@ -99,7 +99,7 @@ export default function Game({ }: Props) {
          <div className="w-full md:w-7/10 bg-gray-200 p-4 flex justify-center items-center">
             {/* Chessboard placeholder */}
             <div className='w-full h-auto justify-center items-center flex  overflow-x-scroll'>
-               <ChessBoard chess={chess} board={board} />
+               <ChessBoard chess={chess} board={board} setChess={_setChess} setBoard={setBoard} />
             </div>
          </div>
          <div className="w-full md:w-3/10 bg-gray-100 p-4 flex justify-center items-center">
