@@ -18,15 +18,15 @@ type SquareProps = {
     type: PieceSymbol;
     color: Color;
   } | null;
-  isWhiteSquare: Boolean
+  isWhiteSquare: boolean
 
 }
 
-const chessAssets: any = {
+const chessAssets:any = {
   q, k, b, p, r, n, B, Q, K, R, P, N
 }
 
-function selectAsset(type: any, color: any) {
+function selectAsset(type: string, color: string) {
   return color == "w" ? type.toUpperCase() : type
 }
 

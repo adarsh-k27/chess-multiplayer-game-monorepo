@@ -11,12 +11,21 @@ import {  GameStatusT, PLAYER_INDICATOR_T_PROPS, PayloadT } from '../types/GameT
 import { useUser } from '@repo/store/useUser'
 import K from '../assets/n.svg'
 import k from '../assets/n.copy.svg'
-type Props = {}
+
 
 const TYPE_OF_GAME = {
    RANDOM: "random"
 }
-
+type MetaData={
+   blackPlayer:{
+      name: string,
+      id: number,
+   },
+   whitePlayer:{
+      name: string,
+      id: number,
+   }
+}
 const checkGameStartedOrNot = (status: GameStatusT) => {
    if (status === GameStatusT.CREATED || status === GameStatusT.NOT_CREATED) return true
 }
@@ -33,16 +42,25 @@ const SEND_INIT_EVENT = (socket: string | boolean | WebSocket | null) => (e: Rea
    }
 }
 
-export default function Game({ }: Props) {
+export default function Game() {
    const [chess, _setChess] = useState(new Chess());
    const [board, setBoard] = useState(chess.board());
    const [game_satatus, setGameStatus] = useState<GameStatusT>(GameStatusT.NOT_CREATED)
-   const [game_meta, setGameMetaData] = useState<any>(null)
+   const [game_meta, setGameMetaData] = useState< MetaData >()
    const socket = useSocket()
    const { pathname } = useLocation()
    const navigate = useNavigate()
    const gameId = pathname.split('/')[2]
    
+   new Promise((resolve,reject)=>{
+      resolve(true)
+      reject(false)
+   }).then((res)=>{
+      console.log(res);
+      
+   }).catch(()=>{
+      
+   })
    
 
    // we  need a PLAYER TURN INDICATOR 
@@ -54,8 +72,8 @@ export default function Game({ }: Props) {
       }
       if (socket !== null && typeof socket !== "boolean" && typeof socket !== "string") {
          socket.onmessage = function (message) {
-            let msg = message as unknown
-            let msg1 = msg as MessageEvent
+            const msg = message as unknown
+            const msg1 = msg as MessageEvent
             const parsedMessage = convertToActualMessage<PayloadT>(msg1)
             switch (parsedMessage.type) {
                case Messages.GAME_ADDED: {
@@ -69,8 +87,8 @@ export default function Game({ }: Props) {
                   setGameStatus(GameStatusT.STARTED)
                   //set Metadata
                   setGameMetaData({
-                     blackPlayer: parsedMessage.payload.blackPlayer,
-                     whitePlayer: parsedMessage.payload.whitePlayer
+                     blackPlayer: parsedMessage.payload.blackPlayer!,
+                     whitePlayer: parsedMessage.payload.whitePlayer!
                   })
 
                   //setChess Board 
@@ -90,7 +108,7 @@ export default function Game({ }: Props) {
          socket.close();
          }
        };
-   }, [socket])
+   }, [socket,navigate,chess])
 
 
 
@@ -105,7 +123,7 @@ export default function Game({ }: Props) {
          <div className="w-full md:w-3/10 bg-gray-100 p-4 flex justify-center items-center">
             <div>
                {
-                  GameStatusT.STARTED === game_satatus && <PlayerIndicator chess={chess} Metadata={game_meta}  />
+                  GameStatusT.STARTED === game_satatus && <PlayerIndicator chess={chess} Metadata={game_meta!}  />
                }
             </div>
             {

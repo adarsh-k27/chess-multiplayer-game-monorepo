@@ -23,7 +23,7 @@ const LandingPage = () => {
         })
         handleError(error)
        }
-    },[error])
+    },[error,handleError])
 
     
     

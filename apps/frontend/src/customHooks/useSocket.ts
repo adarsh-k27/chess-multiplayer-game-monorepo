@@ -12,18 +12,18 @@ export function useSocket(){
       setSocket(url)
       const ws:WT = new WebSocket(`${url}?token=${user?.token}`)
 
-      ws.onopen=function(socket:any ){
+      ws.onopen=function(){
           setSocket(ws)
       }
 
-      ws.onclose=function(socket:any){
+      ws.onclose=function(){
           setSocket(null)
       }
 
       return()=>{
         ws.close()
       }
-   },[])
+   },[user])
 
    return socket;
 }
@@ -32,14 +32,14 @@ export function useSocket(){
 
 
 
-enum type {
-    error
-}
-type SocketMessage = {
-    type: type,
-    message: string,
-    httpStatusCode: string
-}
+// enum type {
+//     error
+// }
+// type SocketMessage = {
+//     type: type,
+//     message: string,
+//     httpStatusCode: string
+// }
 
 
 

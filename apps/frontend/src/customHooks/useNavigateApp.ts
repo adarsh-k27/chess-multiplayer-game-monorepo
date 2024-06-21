@@ -5,8 +5,7 @@ function useNavigateApp() {
 
   const navigate =useNavigate()
 
-  const navigateFn=useCallback((...args:any[])=>{
-    debugger;
+  const navigateFn=useCallback((...args:string[])=>{
      navigate(args[0])
   },[navigate])
 

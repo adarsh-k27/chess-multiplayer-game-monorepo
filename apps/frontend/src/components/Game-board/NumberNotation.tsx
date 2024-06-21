@@ -1,8 +1,4 @@
-import React from 'react'
-
-type Props = {}
-
-export default function NumberNotation({}: Props) {
+export default function NumberNotation() {
   return (
     <div>NumberNotation</div>
   )

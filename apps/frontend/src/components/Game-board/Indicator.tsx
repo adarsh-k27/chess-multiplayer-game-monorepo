@@ -1,6 +1,6 @@
 
 type Props = {
-    isIcon: Boolean
+    isIcon: boolean;
 }
 const Indicator: React.FC<Props> = ({ isIcon }) => {
     return (

@@ -13,8 +13,12 @@ type GameBoardPropsT = {
         type: PieceSymbol;
         color: Color;
     } | null)[][],
-    setChess: any,
-    setBoard: any
+    setChess: React.Dispatch<React.SetStateAction<Chess>>,
+    setBoard: React.Dispatch<React.SetStateAction<({
+        square: Square;
+        type: PieceSymbol;
+        color: Color;
+    } | null)[][]>>
 
 }
 
@@ -47,9 +51,9 @@ export default function GameBoard({ chess, board, setChess, setBoard }: GameBoar
                                             e.preventDefault()
                                             if (chess.turn() !== "b") return false;
                                             if (move.from) {
-                                                let to = findSquare(rowIndex, i)
+                                                const to = findSquare(rowIndex, i)
                                                 // we need to implement Moves and SOcket Call 
-                                                setMove((prev) => ({ ...prev, to: square?.square! }))
+                                                setMove((prev) => ({ ...prev, to: square?square.square:"" }))
                                                 chess.move({ from: move.from, to: to })
                                                 setChess(chess)
                                                 setBoard(chess.board())
@@ -78,7 +82,7 @@ export default function GameBoard({ chess, board, setChess, setBoard }: GameBoar
                                                 rowIndex == 7 && <LetterNotation style='bottom-1 right-3' label={String.fromCharCode(97 + i)} mainColor={(rowIndex + i) % 2} />
                                             }
                                             <SquareBoard square={square} isWhiteSquare={Boolean((rowIndex + i) % 2)} />
-                                            {legalMOves.get(square?.square || findSquare(rowIndex, i)) && <Indicator isIcon={Boolean(square?.square!)} />}
+                                            {legalMOves.get(square?.square || findSquare(rowIndex, i)) && <Indicator isIcon={Boolean(square?square.square :"")} />}
                                         </div>
                                     )
                                 })

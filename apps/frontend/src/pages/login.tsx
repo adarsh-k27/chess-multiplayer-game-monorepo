@@ -1,8 +1,8 @@
 import React from 'react'
 
-type Props = {}
 
-export default function LoginScreen({ }: Props) {
+
+export default function LoginScreen() {
     
     const google= (e: React.MouseEvent<HTMLButtonElement>)=>{
         e.preventDefault()
