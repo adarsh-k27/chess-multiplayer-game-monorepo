@@ -11,7 +11,7 @@ module.exports = {
     create(context) {
         return {
             VariableDeclarator(node) {
-                if (node.id && /^[a-z][a-zA-Z0-9]*$/.test(node.id.name) === false) {
+                if (node.id && node.init.type =="Literal" && /^[a-z][a-zA-Z0-9]*$/.test(node.id.name) === false) {
                     context.report({
                         node,
                         message: 'Variable name "{{ variableName }}" should be in camelCase.',

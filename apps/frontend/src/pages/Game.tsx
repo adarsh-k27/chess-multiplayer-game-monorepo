@@ -55,17 +55,13 @@ export default function Game() {
    new Promise((resolve,reject)=>{
       resolve(true)
       reject(false)
-   }).then((res)=>{
-      console.log(res);
+   }).then(()=>{
+      
       
    }).catch(()=>{
-      
+
    })
    
-
-   // we  need a PLAYER TURN INDICATOR 
-
-
    useEffect(() => {
       if (!socket) {
          return
@@ -73,8 +69,8 @@ export default function Game() {
       if (socket !== null && typeof socket !== "boolean" && typeof socket !== "string") {
          socket.onmessage = function (message) {
             const msg = message as unknown
-            const msg1 = msg as MessageEvent
-            const parsedMessage = convertToActualMessage<PayloadT>(msg1)
+            const msgs = msg as MessageEvent
+            const parsedMessage = convertToActualMessage<PayloadT>(msgs)
             switch (parsedMessage.type) {
                case messages.GAME_ADDED: {
                   // here we need to change the game status and manage the loader for waiting a new player 

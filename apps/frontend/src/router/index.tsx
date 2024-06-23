@@ -1,6 +1,6 @@
 import {  Route, RouterProvider,  createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import { AuthLayout } from '../layout/authLayout'
-import { AUTH_RELATED_ROUTE, PRIVATE_ROUTE, PUBLIC_ROUTE } from './path'
+import { authRelatedRoute, privateRoute, publicRoute } from './path'
 import { PublicLayout } from '../layout/publicLayout'
 import { PrivateLayout } from '../layout/privateLayout'
 import { Fragment } from 'react/jsx-runtime'
@@ -12,7 +12,7 @@ export function RouterWrapper1() {
         <Fragment>
             <Route element={<AuthLayout />} >
                 {
-                    AUTH_RELATED_ROUTE.map(({
+                    authRelatedRoute.map(({
                         component: Component,
                         key,
                         ...restProps
@@ -24,7 +24,7 @@ export function RouterWrapper1() {
 
             <Route element={<PublicLayout />} >
                 {
-                    PUBLIC_ROUTE.map(({
+                    publicRoute.map(({
                         component: Component,
                         key,
                         ...restProps
@@ -36,7 +36,7 @@ export function RouterWrapper1() {
 
             <Route element={<PrivateLayout />} >
                 {
-                    PRIVATE_ROUTE.map(({
+                    privateRoute.map(({
                         component: Component,
                         key,
                         ...restProps

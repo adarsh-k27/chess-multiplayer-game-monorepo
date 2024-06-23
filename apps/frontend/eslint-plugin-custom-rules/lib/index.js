@@ -18,7 +18,9 @@ module.exports.configs = {
             "custom-rules/no-window-dialogs": "error",
             "custom-rules/function-camelcase": "error",
             "custom-rules/no-test-prefix": "error",
-            "custom-rules/require-jsdoc": "warn"
+            "custom-rules/require-jsdoc": "warn",
+            "custom-rules/no-dialog-functions":"error",
+            "custom-rules/no-numeric-variables":"error"
         }
     }
 };

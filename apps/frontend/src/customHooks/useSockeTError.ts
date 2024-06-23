@@ -48,7 +48,6 @@ export function useSocketError(socket: null | string | boolean | WT) {
         } else if (socket.url) {
             socket.onmessage = function (message: any) {
                 const actualMessage = convertToActualMessage<SocketMessage>(message)
-                console.log("MESSAGE", actualMessage);
                 if (actualMessage.type === ErrorType.Error) {
                     setError(actualMessage.message)
                 }
