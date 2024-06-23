@@ -3,7 +3,7 @@ import { Chess } from 'chess.js'
 import ChessBoard from '../components/GameBoard'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useSocket } from '../customHooks/useSocket'
-import { Messages } from '../utilities/Toaster/constants'
+import { messages } from '../utilities/Toaster/constants'
 import { convertToActualMessage } from '../customHooks/useSockeTError'
 import { MessageEvent } from 'ws'
 import WaitingOpponent from '../components/Game-board/waiting_opponent'
@@ -13,7 +13,7 @@ import K from '../assets/n.svg'
 import k from '../assets/n.copy.svg'
 
 
-const TYPE_OF_GAME = {
+const typeOfGame = {
    RANDOM: "random"
 }
 type MetaData={
@@ -32,10 +32,10 @@ const checkGameStartedOrNot = (status: GameStatusT) => {
 
 
 
-const SEND_INIT_EVENT = (socket: string | boolean | WebSocket | null) => (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+const sendInitEvent = (socket: string | boolean | WebSocket | null) => (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
    e.preventDefault()
    const payload = {
-      type: Messages.INIT_GAME,
+      type: messages.INIT_GAME,
    }
    if (socket !== null && typeof socket !== "boolean" && typeof socket !== "string") {
       socket.send(JSON.stringify(payload))
@@ -76,12 +76,12 @@ export default function Game() {
             const msg1 = msg as MessageEvent
             const parsedMessage = convertToActualMessage<PayloadT>(msg1)
             switch (parsedMessage.type) {
-               case Messages.GAME_ADDED: {
+               case messages.GAME_ADDED: {
                   // here we need to change the game status and manage the loader for waiting a new player 
                   setGameStatus(GameStatusT.CREATED)
                   break;
                }
-               case Messages.INIT_GAME: {
+               case messages.INIT_GAME: {
                   const gameId = parsedMessage.payload.gameId
                   // here we will get the payload for our games and start the game
                   setGameStatus(GameStatusT.STARTED)
@@ -127,8 +127,8 @@ export default function Game() {
                }
             </div>
             {
-               checkGameStartedOrNot(game_satatus) && game_satatus == GameStatusT.CREATED ? <WaitingOpponent /> : gameId && gameId == TYPE_OF_GAME.RANDOM ? <button className="bg-green-500 text-white font-bold py-2 px-4 rounded-full hover:bg-green-700 transition duration-300 ease-in-out transform hover:scale-105 shadow-lg"
-                  onClick={SEND_INIT_EVENT(socket)}
+               checkGameStartedOrNot(game_satatus) && game_satatus == GameStatusT.CREATED ? <WaitingOpponent /> : gameId && gameId == typeOfGame.RANDOM ? <button className="bg-green-500 text-white font-bold py-2 px-4 rounded-full hover:bg-green-700 transition duration-300 ease-in-out transform hover:scale-105 shadow-lg"
+                  onClick={sendInitEvent(socket)}
                >
                   PLAY
                </button> : null
@@ -151,7 +151,7 @@ function PlayerIndicator({chess,Metadata}:PLAYER_INDICATOR_T_PROPS){
    // implement Logic here 
 
    const isIamBlack=user?.id === Metadata.blackPlayer.id ? true : false
-   const Turn= ["Opposite Turn","Your Turn"]
+   const turn= ["Opposite Turn","Your Turn"]
    const chessTurn=chess.turn()
    const currentTurn =(isIamBlack  ? "b" :"w" )=== chessTurn ? 1 : 0
 
@@ -164,7 +164,7 @@ function PlayerIndicator({chess,Metadata}:PLAYER_INDICATOR_T_PROPS){
           className="w-12 h-12 rounded-full"
         />
         <h1 className="text-xl font-bold text-gray-800">
-          {Turn[currentTurn]}
+          {turn[currentTurn]}
         </h1>
       </div>
 

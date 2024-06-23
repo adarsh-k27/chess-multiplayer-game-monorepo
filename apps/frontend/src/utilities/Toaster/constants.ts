@@ -1,11 +1,11 @@
-export const Messages={
+export const messages={
     INIT_GAME:"INIT_GAME",
     GAME_ADDED:"GAME_ADDED",
     SELF_ALERT:'SELF_ALERT',
     JOIN_GAME:"JOIN_GAME"
 }
-const arrayOfMessages=Object.values(Messages)
-export const  TYPES_VALUE=arrayOfMessages.reduce((acc,curr,index)=>{
+const arrayOfMessages=Object.values(messages)
+export const  typeValue=arrayOfMessages.reduce((acc,curr,index)=>{
     if(index!== arrayOfMessages.length -1 ){
         acc += curr +"| "
     }else{
@@ -15,4 +15,4 @@ export const  TYPES_VALUE=arrayOfMessages.reduce((acc,curr,index)=>{
 
 },"" )
 
-export type TYPES_VALUET= typeof TYPES_VALUE
+export type TYPES_VALUET= typeof typeValue

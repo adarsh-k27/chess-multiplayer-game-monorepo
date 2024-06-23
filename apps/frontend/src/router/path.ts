@@ -1,49 +1,49 @@
 import React from "react"
 
-const LAZY_GAME_SCREEN= React.lazy(()=> import ("../pages/Game"))
-const LAZY_LANDING_SCREEN= React.lazy(()=> import ("../pages/LandingPage"))
-const LAZY_LOGIN_SCREEN= React.lazy(()=> import ("../pages/login"))
+const lazyGameScreen= React.lazy(()=> import ("../pages/Game"))
+const lazyLandingScreen= React.lazy(()=> import ("../pages/LandingPage"))
+const lazyLoginScreen= React.lazy(()=> import ("../pages/login"))
 
-    const PRIVATE_PATHS={
+    const privatePaths={
         GAME:"/game/:id"
     }
 
-    const PUBLIC_PATH={
+    const publicPath={
     HOME:"/",
 }
 
-const AUTH_PATH={
+const authPath={
     LOGIN:"/login"
 }
 
 
 
-export const PRIVATE_ROUTE=[
+export const privateRoute=[
     {   
-        path:PRIVATE_PATHS.GAME,
+        path:privatePaths.GAME,
         key:"GAME",
-        component:LAZY_GAME_SCREEN,
+        component:lazyGameScreen,
         
     },
 ]
 
 
-export const PUBLIC_ROUTE=[
+export const publicRoute=[
     {   
-        path:PUBLIC_PATH.HOME,
+        path:publicPath.HOME,
         key:"HOME",
-        component:LAZY_LANDING_SCREEN,
+        component:lazyLandingScreen,
         
     },
-    ...PRIVATE_ROUTE,
+    ...privateRoute,
 ]
 
-export  const AUTH_RELATED_ROUTE=[
+export  const authRelatedRoute=[
     {
       
-      path:AUTH_PATH.LOGIN,
+      path:authPath.LOGIN,
       key:"LOGIN",
-      component:LAZY_LOGIN_SCREEN,
+      component:lazyLoginScreen,
       
 
     }

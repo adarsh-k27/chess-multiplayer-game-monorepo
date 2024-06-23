@@ -51,7 +51,6 @@ export function RouterWrapper1() {
 }
 
 
-
 export const routes = createBrowserRouter(
     createRoutesFromElements(RouterWrapper1())
 )

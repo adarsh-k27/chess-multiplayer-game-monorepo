@@ -4,11 +4,13 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended', // we need to add a promise plugin
+    'plugin:react-hooks/recommended',
+    //'plugin:custom-rules/recommended'
+    // we need to add a promise plugin
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh','promise'],
+  plugins: ['react-refresh','promise',"custom-rules"],
   rules: {
     'react-refresh/only-export-components': [
       'error',
@@ -16,6 +18,10 @@ module.exports = {
     ],
     'promise/catch-or-return':"error",
     '@typescript-eslint/no-explicit-any':"warn",
-    'react-refresh/only-export-components':"off"
+    'react-refresh/only-export-components':"off",
+    
   },
 }
+
+// custom rules for Function 
+// start a function name with lowercase letter 

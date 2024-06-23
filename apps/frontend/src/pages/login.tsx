@@ -6,8 +6,8 @@ export default function LoginScreen() {
     
     const google= (e: React.MouseEvent<HTMLButtonElement>)=>{
         e.preventDefault()
-        const BackendUrl="http://localhost:5000"
-        const url=`${BackendUrl}/auth/google`
+        const backendUrl="http://localhost:5000"
+        const url=`${backendUrl}/auth/google`
         window.open(url, '_self');
     }
     return (
